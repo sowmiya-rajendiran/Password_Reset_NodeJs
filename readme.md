@@ -59,4 +59,4 @@
     - And user sample mail-id for testing - 123456@gmail.com
 
 ## Deployed Link
-- 
+- https://password-reset-nodejs-fb4t.onrender.com

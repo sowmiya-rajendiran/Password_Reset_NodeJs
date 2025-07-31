@@ -3,7 +3,7 @@ const { EMAIL, PASS } = require('./config');
 
 // Sender email details
 const sendResetEmail = async (email , token ) => {
-    const resetLink = `http://localhost:5173/resetpassword/${token}`;
+    const resetLink = `https://passwordre.netlify.app/resetpassword/${token}`;
 
     const transporter = nodemailer.createTransport({
         host: 'smtp.ethereal.email',
