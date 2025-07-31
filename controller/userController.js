@@ -48,7 +48,7 @@ const userContoller = {
             });
             
             await sendResetEmail(email , token);
-            return res.status(500).json({message : "Email Send Successfully" , token : token})
+            return res.status(200).json({message : "Email Send Successfully" , token : token})
 
         }
         catch(err){

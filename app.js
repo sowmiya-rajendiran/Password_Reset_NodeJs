@@ -1,14 +1,15 @@
 const express = require('express');
+const cors = require('cors'); 
 const userRouter = require('./routes/userRouter');
 const errorRoute = require('./utils/errorRoute');
-// const cros = require('cros');
 
 const app = express();
 
-// enable cors orgin
-// app.use(cros({
-//     origin : "http://localhost:5024"
-// }))
+//  allow requests from frontend
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
 app.use(express.json());
 
