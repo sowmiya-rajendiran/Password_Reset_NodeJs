@@ -7,7 +7,7 @@ const app = express();
 
 //  allow requests from frontend
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://passwordre.netlify.app/",
   credentials: true,
 }));
 
