@@ -54,6 +54,7 @@
 ## nodemailer :
     - i am using testemail so sharing for validate
     - https://ethereal.email/
+    - https://ethereal.email/messages
     - 'samara.morissette@ethereal.email'
     - PASS = 'VKF7bd6TU9ST26mp6M'
     - And user sample mail-id for testing - 123456@gmail.com

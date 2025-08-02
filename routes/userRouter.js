@@ -1,9 +1,11 @@
 const express = require('express');
-const { register, forgetPassword, resetPassword } = require('../controller/userController');
+const { register, forgetPassword, resetPassword, login } = require('../controller/userController');
 
 const userRouter = express.Router();
 
-userRouter.post('/' , register);
+// public route
+userRouter.post('/register' , register);
+userRouter.post('/login' , login);
 userRouter.post('/forgetpassword' , forgetPassword );
 userRouter.post('/resetpassword/:token' ,  resetPassword);
 

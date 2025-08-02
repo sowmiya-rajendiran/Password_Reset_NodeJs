@@ -11,7 +11,7 @@ const userContoller = {
             // check exist user
             const existUser = await userModel.find({email});
             if(existUser.length > 0 ){
-                return res.status(500).json({message : "User already exist"})
+                return res.status(400).json({message : "User already exist"})
             }
             // password encrypt
             const hashPassword = await bcrypt.hash(password , 10);
@@ -26,9 +26,48 @@ const userContoller = {
             res.status(200).json({message : "Register Successfully" , NewRegister : newRegister})
         }
         catch(err){
-            res.status(500).json({message : "Error Register" , Error : err.message})
+            res.status(500).json({message : "Please enter a valid email" , Error : err.message})
         }
 
+    },
+    login : async (req , res) =>{
+        try{
+            const {email , password} = req.body;
+            //if email exist
+            const user  = await userModel.findOne({email});
+            if(!user){
+                return res.status(400).json({message : "User not registerd"})
+            }
+            // compare password
+            const isPassword = await bcrypt.compare(password , user.password);
+            if(!isPassword){
+                return res.status(400).json({message : "Password is not match"})
+            }
+            // because authentication is not implemented
+            // jwt token generate 
+            // const jwtToken = jwt.sign({user : user._id} , JWT_SECRET , {expiresIn : '1h'})
+
+            // set token as http cookies only
+            // res.cookie("token", jwtToken , {
+            //     httpOnly : true,
+            //     secure : false,
+            //     samSite : "strict"
+            // }) 
+
+ 
+            res.status(200).json({message : "login successfully"})
+
+        }
+        catch(err){
+            res.status(500).json({message : "Error login Contoller" , Error : err.message})
+        }
+    },
+    logout : async(req , res) =>{
+        try{
+            res.json({message : "logout successfully"})
+        }catch(err){
+            res.status(500).json({message : "logout error"})
+        }
     },
     forgetPassword : async (req , res) => {
         try{
