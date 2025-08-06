@@ -6,12 +6,11 @@ const sendResetEmail = async (email , token ) => {
     const resetLink = `https://passwordre.netlify.app/resetpassword/${token}`;
 
     const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
+        service: 'gmail',
         auth: {
             user: EMAIL,
             pass: PASS
-        }
+            }
     });
     const mailOptions = {
         from : `"Support" <${EMAIL}>`,
